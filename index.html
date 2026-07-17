@@ -328,3 +328,22 @@
                     </div>
                     <div class="car-meta">В планах</div>
         </div> <!-- Это закрывается сетка текущих проектов garage-grid -->
+
+            <script>
+    document.getElementById('carSearch').addEventListener('input', function() {
+        let filter = this.value.toLowerCase();
+        // Теперь ищем сами ссылки, внутри которых лежат карточки
+        let carLinks = document.querySelectorAll('.garage-grid > a');
+
+        carLinks.forEach(function(link) {
+            let carName = link.querySelector('.car-name span').textContent.toLowerCase();
+            
+            // Если имя совпадает — показываем всю ссылку с карточкой, если нет — скрываем
+            if (carName.includes(filter)) {
+                link.style.display = "";
+            } else {
+                link.style.display = "none";
+            }
+        });
+    });
+</script>
