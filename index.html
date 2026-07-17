@@ -292,42 +292,46 @@
             <div class="badge-mock">ИГРА: NFS MW 2012</div>
         </div>
 
-        <!-- ТЕКУЩИЕ ПРОЕКТЫ -->
+         <!-- СЕКЦИЯ 1: В ГАРАЖЕ -->
         <div class="garage-section">
-            <div class="section-title">Текущие проекты</div>
+            <div class="section-title">В ГАРАЖЕ (Текущие проекты)</div>
             <div class="garage-grid">
                 
-                <!-- Супра -->
-                <div class="car-card searchable-card" data-name="toyota supra a80">
+                <!-- Супра (Прогресс менять ТОЛЬКО в data-progress) -->
+                <div class="car-card searchable-card" data-name="toyota supra a80" data-progress="65">
                     <a href="/supraa80/" style="text-decoration: none; color: inherit; display: block;">
-                        <div class="car-img-placeholder" style="background-image: url('/supraa80/1262560_20260716145534_1.png');"></div>
+                        <div class="car-img-placeholder" style="background-image: url('/supraa80/supra_1.png');"></div>
                         <div class="car-info">
-                            <div class="car-name"><span>Toyota Supra (A80)</span> <span>65%</span></div>
-                            <div class="car-meta">Stock Edition</div>
+                            <div class="car-name">
+                                <span>Toyota Supra (A80)</span> 
+                                <span class="percent-text"><!-- Сюда процент подставится сам --></span>
+                            </div>
+                            <div class="car-meta">Stock Edition // Конверт модели</div>
                             <div class="status-row"><span>Кузов:</span> <span class="text-done">ГОТОВО</span></div>
-                            <div class="status-row"><span>Оптика & Фары:</span> <span class="text-process">В ПРОЦЕССЕ</span></div>
+                            <div class="status-row"><span>Фары:</span> <span class="text-process">В ПРОЦЕССЕ</span></div>
                             <div class="status-row"><span>Подкапотка (2JZ):</span> <span class="text-process">В ПРОЦЕССЕ</span></div>
-                            <div class="bar-bg"><div class="bar-fill" style="width: 65%;"></div></div>
-        
+                            <div class="bar-bg"><div class="bar-fill"></div></div>
                         </div>
                     </a>
                 </div>
 
-                <!-- БМВ М8 -->
-                <div class="car-card searchable-card" data-name="bmw m8 coupe f92">
+                <!-- БМВ М8 (Прогресс менять ТОЛЬКО в data-progress) -->
+                <div class="car-card searchable-card" data-name="bmw m8 coupe f92" data-progress="0">
                     <div class="car-img-placeholder" style="background-color: #1a1c1f;"></div>
                     <div class="car-info">
-                        <div class="car-name"><span>BMW M8 Coupe (F92)</span> <span>0%</span></div>
+                        <div class="car-name">
+                            <span>BMW M8 Coupe (F92)</span> 
+                            <span class="percent-text"><!-- Сюда процент подставится сам --></span>
+                        </div>
                         <div class="car-meta">В планах</div>
-                        <div class="status-row"><span>Геометрия:</span> <span class="text-queue">В ПЛАНАХ</span></div>
-                        <div class="status-row"><span>Конверт в игру:</span> <span class="text-queue">В ПЛАНАХ</span></div>
-                        <div class="bar-bg"><div class="bar-fill" style="width: 0%;"></div></div>
+                        <div class="status-row"><span>Геометрия:</span> <span class="text-done">В ПРОЦЕССЕ</span></div>
+                        <div class="status-row"><span>Конверт в игру:</span> <span class="text-process">В ПРОЦЕССЕ</span></div>
+                        <div class="bar-bg"><div class="bar-fill"></div></div>
                     </div>
                 </div>
 
             </div>
         </div>
-    </div>
     <script>
         // Инициализация процентов и честного градиента для всех карточек
         function initCarProgress() {
