@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     header.innerHTML = `
         <div class="logo" style="cursor: pointer;" onclick="window.location.href='/'">RANCOL<span>.DEV</span></div>
         <div class="nav-links">
-            <a href="/">ГАРАЖ</a>
+            <a href="/">ГЛАВНАЯ</a>
             <a href="https://t.me" target="_blank">TELEGRAM</a>
         </div>
     `;
