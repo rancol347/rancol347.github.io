@@ -4,26 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Toyota Supra (A80) | Progress</title>
+    
+    <!-- Подключаем наш общий скрипт шапки -->
     <script src="/navbar.js"></script>
+
     <style>
+        /* Локальное подключение шрифта Bender */
         @font-face {
             font-family: 'Bender';
-            src: url('https://onlinewebfonts.com') format('woff2');
+            src: url('/Jovanny Lemonad - Bender-Bold.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
         }
-        
+
         body { 
-            font-family: 'Bender', sans-serif; 
+            font-family: 'Bender', 'Arial Black', sans-serif; 
             background: #0b0c0e; 
             color: #e3e4e6; 
             margin: 0; 
-            padding: 40px 20px; 
+            padding: 0; /* Убираем дефолтный паддинг, чтобы шапка прилипла к верху */
             text-align: center; 
         }
-        .container { max-width: 900px; margin: 0 auto; }
-        .back-link { color: #ff3333; text-decoration: none; text-transform: uppercase; font-weight: bold; display: inline-block; margin-bottom: 30px; }
-        h1 { text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
-        .meta { color: #646973; text-transform: uppercase; font-size: 0.9em; margin-bottom: 40px; }
+
+        /* КРАСИМ ШАПКУ НА СТРАНИЦЕ СУПРЫ */
+        .navbar {
+            background: #0f1114;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+            width: 100%;
+        }
+        .logo { font-size: 1.4em; font-weight: 900; color: #fff; letter-spacing: 2px; text-transform: uppercase; }
+        .logo span { color: #ff3333; }
+        .nav-links a { color: #8aa0a8; text-decoration: none; text-transform: uppercase; font-size: 0.9em; margin-left: 20px; transition: 0.2s; font-family: 'Bender', sans-serif; }
+        .nav-links a:hover { color: #fff; }
+
+        /* Контейнер страницы */
+        .container { 
+            max-width: 900px; 
+            margin: 50px auto; 
+            padding: 0 20px; 
+        }
+
+        .back-link { 
+            color: #ff3333; 
+            text-decoration: none; 
+            text-transform: uppercase; 
+            font-weight: bold; 
+            display: inline-block; 
+            margin-bottom: 30px; 
+            letter-spacing: 1px;
+        }
+        .back-link:hover { text-shadow: 0 0 10px rgba(255,51,51,0.5); }
+
+        h1 { text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; color: #fff; font-size: 2.5em; }
+        .meta { color: #646973; text-transform: uppercase; font-size: 0.9em; margin-bottom: 40px; letter-spacing: 1px; }
         
+        /* Сетка скриншотов */
         .screenshot-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -32,19 +72,21 @@
         }
         .screenshot-grid img {
             width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
             border: 1px solid rgba(255,255,255,0.05);
             border-radius: 4px;
             transition: 0.3s;
-            cursor: pointer; /* Делает курсор в виде пальца при наведении */
+            cursor: pointer;
         }
         .screenshot-grid img:hover {
             border-color: #ff3333;
             transform: scale(1.01);
         }
 
-        /* СТИЛИ ДЛЯ ОКНА УВЕЛИЧЕНИЯ КАРТИНКИ */
+        /* Лайтбокс во весь экран */
         .lightbox {
-            display: none; /* По умолчанию скрыто */
+            display: none;
             position: fixed;
             z-index: 999;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -63,39 +105,42 @@
 </head>
 <body>
 
+    <!-- Шапка вставится сама скриптом navbar.js перед контейнером -->
+
     <div class="container">
         <a href="/" class="back-link">← Вернуться в гараж</a>
         <h1>Toyota Supra (A80)</h1>
         <div class="meta">Текущий статус: 65% // Скриншоты разработки</div>
 
-        <p>Работа кипит. Полностью завершил кузовные работы, сейчас ковыряю оптику и детализирую подкапотку под 2JZ-GTE.</p>
+        <p style="color: #8a8d93; line-height: 1.6; font-size: 1.05em;">
+            Работа кипит. Полностью завершил кузовные работы, сейчас ковыряю оптику и детализирую подкапотку под 2JZ-GTE.
+        </p>
 
         <div class="screenshot-grid">
+            <!-- Исправленные пути к картинкам внутри папки supraa80 -->
             <img src="1262560_20260716145534_1.png" alt="Supra Look">
+            <!-- Убедись, что файл подкапотки лежит в этой же папке под именем supra_engine.png -->
             <img src="supra_engine.png" alt="Supra Engine">
         </div>
     </div>
 
-    <!-- Наше скрытое окно для большого просмотра -->
+    <!-- Лайтбокс -->
     <div id="lightbox" class="lightbox">
         <img id="lightbox-img" src="" alt="Большой просмотр">
     </div>
 
-    <!-- СКРИПТ УВЕЛИЧЕНИЯ КАРТИНКИ -->
     <script>
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const images = document.querySelectorAll('.screenshot-grid img');
 
-        // Клик на любую картинку в сетке
         images.forEach(img => {
             img.addEventListener('click', () => {
-                lightboxImg.src = img.src; // Берем адрес картинки
-                lightbox.style.display = 'flex'; // Показываем подложку
+                lightboxImg.src = img.src;
+                lightbox.style.display = 'flex';
             });
         });
 
-        // Клик в любое место большого окна закрывает его обратно
         lightbox.addEventListener('click', () => {
             lightbox.style.display = 'none';
         });
