@@ -329,7 +329,14 @@
                         <span>0%</span>
                     </div>
                     <div class="car-meta">В планах</div>
-                    
+<!-- Секция готовых релизов с ArtStation -->
+<div class="garage-section" style="margin-top: 50px;">
+    <div class="section-title">Готовые релизы (Синхронизация с ArtStation)</div>
+    <div class="garage-grid" id="artstation-gallery">
+        <!-- Сюда JavaScript сам добавит Ferrari FXX-K и другие готовые тачки -->
+        <div style="color: #646973; font-style: italic; padding: 20px;">Загрузка готовых моделей из портфолио...</div>
+    </div>
+</div>                    
 <script>
     document.getElementById('carSearch').addEventListener('input', function() {
         let filter = this.value.toLowerCase();
@@ -347,4 +354,56 @@
             }
         });
     });
+</script>
+<script>
+    // Твой ник на ArtStation (замени, если он отличается)
+    const artstationUser = 'rancol347'; 
+    
+    // Ссылка на твой RSS поток через бесплатный парсер в JSON
+    const rssUrl = `https://rss2json.com{artstationUser}.rss`;
+
+    fetch(rssUrl)
+        .then(response => response.json())
+        .then(data => {
+            const galleryContainer = document.getElementById('artstation-gallery');
+            
+            if (data.status === 'ok' && data.items.length > 0) {
+                galleryContainer.innerHTML = ''; // Очищаем текст загрузки
+                
+                data.items.forEach(item => {
+                    // Создаем карточку для каждой готовой машины
+                    const carCard = document.createElement('div');
+                    carCard.className = 'car-card';
+                    
+                    // Извлекаем чистую ссылку на картинку-обложку
+                    const coverImage = item.thumbnail || 'style="background-color: #1a1c1f;"';
+
+                    carCard.innerHTML = `
+                        <div class="car-img-placeholder" style="background-image: linear-gradient(to top, #141619 0%, transparent 100%), url('${coverImage}');"></div>
+                        <div class="car-info">
+                            <div class="car-name">
+                                <span>${item.title}</span>
+                                <span class="text-done" style="font-size: 0.85em; text-transform: uppercase;">🔥 РЕЛИЗ</span>
+                            </div>
+                            <div class="car-meta" style="margin-bottom: 15px;">Опубликовано на ArtStation</div>
+                            
+                            <p style="font-size: 0.9em; color: #8a8d93; line-height: 1.4; margin: 0 0 20px 0;">
+                                Нажмите ниже, чтобы посмотреть полные скриншоты, рендеры и детализацию модели.
+                            </p>
+                            
+                            <a href="${item.link}" target="_blank" class="btn-main" style="padding: 10px 20px; font-size: 0.85em; width: calc(100% - 40px); text-align: center; display: block;">
+                                Посмотреть проект
+                            </a>
+                        </div>
+                    `;
+                    galleryContainer.appendChild(carCard);
+                });
+            } else {
+                galleryContainer.innerHTML = '<div style="color: #646973;">Не удалось загрузить готовые проекты или профиль пуст.</div>';
+            }
+        })
+        .catch(error => {
+            console.error('Ошибка загрузки ArtStation:', error);
+            document.getElementById('artstation-gallery').innerHTML = '<div style="color: #ff3333;">Ошибка подключения к портфолио.</div>';
+        });
 </script>
