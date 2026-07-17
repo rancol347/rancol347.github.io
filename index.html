@@ -251,19 +251,19 @@
 
          <!-- СЕКЦИЯ 1: В ГАРАЖЕ -->
         <div class="garage-section">
-            <div class="section-title">В ГАРАЖЕ (Текущие проекты)</div>
+            <div class="section-title">Текущие проекты</div>
             <div class="garage-grid">
                 
                 <!-- Супра (Прогресс менять ТОЛЬКО в data-progress) -->
                 <div class="car-card searchable-card" data-name="toyota supra a80" data-progress="65">
                     <a href="/supraa80/" style="text-decoration: none; color: inherit; display: block;">
-                        <div class="car-img-placeholder" style="background-image: url('/supraa80/supra_1.png');"></div>
+                        <div class="car-img-placeholder" style="background-image: url('/supraa80/1262560_20260716145534_1');"></div>
                         <div class="car-info">
                             <div class="car-name">
                                 <span>Toyota Supra (A80)</span> 
                                 <span class="percent-text"><!-- Сюда процент подставится сам --></span>
                             </div>
-                            <div class="car-meta">Stock Edition // Конверт модели</div>
+                            <div class="car-meta">Stock Edition</div>
                             <div class="status-row"><span>Кузов:</span> <span class="text-done">ГОТОВО</span></div>
                             <div class="status-row"><span>Фары:</span> <span class="text-process">В ПРОЦЕССЕ</span></div>
                             <div class="status-row"><span>Подкапотка (2JZ):</span> <span class="text-process">В ПРОЦЕССЕ</span></div>
@@ -289,51 +289,44 @@
 
             </div>
         </div>
- <script>
-    // 1. Автоматический расчет процентов и честного градиента шкал
-    function initCarProgress() {
-        let cards = document.querySelectorAll('.searchable-card');
-        
-        cards.forEach(function(card) {
-            let progress = parseInt(card.getAttribute('data-progress')) || 0;
-            
-            // Находим и обновляем текст процентов (например, 65%)
-            let percentText = card.querySelector('.percent-text');
-            if (percentText) {
-                percentText.textContent = progress + '%';
-            }
-            
-            // Находим полосу и рассчитываем не сжимающийся градиент
-            let barFill = card.querySelector('.bar-fill');
-            if (barFill && progress > 0) {
-                barFill.style.width = progress + '%';
-                let totalWidth = 100 * (100 / progress);
-                barFill.style.backgroundSize = totalWidth + '% 100%';
-            }
-        });
-    }
-
-    // 2. Логика живого поиска по дата-аттрибуту data-name
-    const searchInput = document.getElementById('carSearch');
-    if (searchInput) {
-        searchInput.addEventListener('input', function() {
-            let filter = this.value.toLowerCase().trim();
+    <script>
+        function initCarProgress() {
             let cards = document.querySelectorAll('.searchable-card');
-
             cards.forEach(function(card) {
-                let carDataName = card.getAttribute('data-name');
-                if (carDataName) {
-                    carDataName = carDataName.toLowerCase();
-                    if (carDataName.includes(filter)) {
-                        card.style.display = "block";
+                let progress = parseInt(card.getAttribute('data-progress')) || 0;
+                let percentTextElement = card.querySelector('.percent-text');
+                if (percentTextElement) {
+                    percentTextElement.textContent = progress + '%';
+                }
+                
+                let barFill = card.querySelector('.bar-fill');
+                if (barFill) {
+                    if (progress > 0) {
+                        // Если прогресс больше нуля — считаем красивый градиент
+                        barFill.style.width = progress + '%';
+                        let totalWidth = 100 * (100 / progress);
+                        barFill.style.backgroundSize = totalWidth + '% 100%';
                     } else {
-                        card.style.display = "none";
+                        // ЕСЛИ 0% — ЖЕСТКО ОБНУЛЯЕМ ПОЛОСУ, ЧТОБЫ ОНА НЕ ТОРЧАЛА
+                        barFill.style.width = '0%';
+                        barFill.style.backgroundSize = '100% 100%';
                     }
                 }
             });
-        });
-    }
+        }
 
-    // Запуск автоматического просчета при загрузке
-    initCarProgress();
-</script>
+        document.getElementById('carSearch').addEventListener('input', function() {
+            let filter = this.value.toLowerCase().trim();
+            let cards = document.querySelectorAll('.searchable-card');
+            cards.forEach(function(card) {
+                let carDataName = card.getAttribute('data-name').toLowerCase();
+                if (carDataName.includes(filter)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        });
+
+        initCarProgress();
+    </script>
