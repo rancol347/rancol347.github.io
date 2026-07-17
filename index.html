@@ -12,7 +12,22 @@
             font-weight: normal;
             font-style: normal;
         }
-
+#carSearch {
+    flex: 1;
+    background: #0b0c0e;
+    border: 1px solid #2d3139;
+    padding: 12px 15px;
+    color: #fff;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    font-family: 'Bender', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+}
+#carSearch:focus {
+    border-color: #ff3333;
+    box-shadow: 0 0 10px rgba(255, 51, 51, 0.2);
+}    
         body { 
             font-family: 'Bender', 'Arial Black', sans-serif; 
             background-color: #0b0c0e;
@@ -279,7 +294,7 @@
         
         <!-- Имитация панели управления из NFSMods -->
         <div class="filter-bar">
-            <div class="search-mock">Поиск модов...</div>
+<input type="text" id="carSearch" placeholder="Поиск по гаражу..." autocomplete="off">
             <div class="badge-mock">Игра: NFS MW 2012</div>
             <div class="badge-mock">Сортировка: По готовности</div>
         </div>
@@ -315,3 +330,21 @@
                     </div>
                     <div class="car-meta">В планах</div>
                     
+<script>
+    document.getElementById('carSearch').addEventListener('input', function() {
+        let filter = this.value.toLowerCase();
+        let cards = document.querySelectorAll('.car-card');
+
+        cards.forEach(function(card) {
+            // Находим имя машины внутри карточки
+            let carName = card.querySelector('.car-name span').textContent.toLowerCase();
+            
+            // Если имя совпадает с вводом — показываем карточку, если нет — скрываем
+            if (carName.includes(filter)) {
+                card.style.display = "";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    });
+</script>
