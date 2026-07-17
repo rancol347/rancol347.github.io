@@ -332,48 +332,51 @@
 
             </div>
         </div>
-    <script>
-        // Инициализация процентов и честного градиента для всех карточек
-        function initCarProgress() {
-            let cards = document.querySelectorAll('.searchable-card');
+ <script>
+    // 1. Автоматический расчет процентов и честного градиента шкал
+    function initCarProgress() {
+        let cards = document.querySelectorAll('.searchable-card');
+        
+        cards.forEach(function(card) {
+            let progress = parseInt(card.getAttribute('data-progress')) || 0;
             
-            cards.forEach(function(card) {
-                // Извлекаем цифру из data-progress (например, 65)
-                let progress = parseInt(card.getAttribute('data-progress')) || 0;
-                
-                // Автоматически вставляем текст с процентами на экран
-                let percentTextElement = card.querySelector('.percent-text');
-                if (percentTextElement) {
-                    percentTextElement.textContent = progress + '%';
-                }
-                
-                // Находим полосу прогресса внутри этой карточки
-                let barFill = card.querySelector('.bar-fill');
-                if (barFill && progress > 0) {
-                    // Устанавливаем ширину полосы
-                    barFill.style.width = progress + '%';
-                    // Магия: растягиваем сам фон-градиент обратно пропорционально ширине полосы
-                    let totalWidth = 100 * (100 / progress);
-                    barFill.style.backgroundSize = totalWidth + '% 100%';
-                }
-            });
-        }
+            // Находим и обновляем текст процентов (например, 65%)
+            let percentText = card.querySelector('.percent-text');
+            if (percentText) {
+                percentText.textContent = progress + '%';
+            }
+            
+            // Находим полосу и рассчитываем не сжимающийся градиент
+            let barFill = card.querySelector('.bar-fill');
+            if (barFill && progress > 0) {
+                barFill.style.width = progress + '%';
+                let totalWidth = 100 * (100 / progress);
+                barFill.style.backgroundSize = totalWidth + '% 100%';
+            }
+        });
+    }
 
-        // Логика живого поиска
-        document.getElementById('carSearch').addEventListener('input', function() {
+    // 2. Логика живого поиска по дата-аттрибуту data-name
+    const searchInput = document.getElementById('carSearch');
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
             let filter = this.value.toLowerCase().trim();
             let cards = document.querySelectorAll('.searchable-card');
 
             cards.forEach(function(card) {
-                let carDataName = card.getAttribute('data-name').toLowerCase();
-                if (carDataName.includes(filter)) {
-                    card.style.display = "block";
-                } else {
-                    card.style.display = "none";
+                let carDataName = card.getAttribute('data-name');
+                if (carDataName) {
+                    carDataName = carDataName.toLowerCase();
+                    if (carDataName.includes(filter)) {
+                        card.style.display = "block";
+                    } else {
+                        card.style.display = "none";
+                    }
                 }
             });
         });
+    }
 
-        // Запускаем автоматический просчет сразу при загрузке страницы
-        initCarProgress();
-    </script>
+    // Запуск автоматического просчета при загрузке
+    initCarProgress();
+</script>
