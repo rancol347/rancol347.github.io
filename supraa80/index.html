@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toyota Supra (A80) | Progress</title>
+    <style>
+        @font-face {
+            font-family: 'Bender';
+            src: url('https://onlinewebfonts.com') format('woff2');
+        }
+        body { 
+            font-family: 'Bender', sans-serif; 
+            background: #0b0c0e; 
+            color: #e3e4e6; 
+            margin: 0; 
+            padding: 40px 20px; 
+            text-align: center; 
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        .back-link { color: #ff3333; text-decoration: none; text-transform: uppercase; font-weight: bold; display: inline-block; margin-bottom: 30px; }
+        h1 { text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
+        .meta { color: #646973; text-transform: uppercase; font-size: 0.9em; margin-bottom: 40px; }
+        
+        /* Сетка для твоих скриншотов */
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .screenshot-grid img {
+            width: 100%;
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+        .screenshot-grid img:hover {
+            border-color: #ff3333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">← Вернуться в гараж</a>
+        <h1>Toyota Supra (A80) Single Turbo</h1>
+        <div class="meta">Текущий статус: 65% // Скриншоты разработки</div>
+
+        <p>Работа кипит. Полностью завершил кузовные работы, сейчас ковыряю оптику и детализирую подкапотку под 2JZ-GTE.</p>
+
+        <div class="screenshot-grid">
+            <!-- Замени supra_1.png на точное имя файла, который ты загрузил на Шаге 1 -->
+            <img src="/supra_1.png" alt="Supra Look">
+            <!-- Замени supra_engine.png на точное имя файла подкапотки -->
+            <img src="/supra_engine.png" alt="Supra Engine">
+        </div>
+    </div>
+</body>
+</html>
