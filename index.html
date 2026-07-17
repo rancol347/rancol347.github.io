@@ -284,7 +284,7 @@
     <div class="hero-banner" style="background-image: linear-gradient(to bottom, rgba(11, 12, 14, 0.4) 0%, rgba(11, 12, 14, 1) 100%), url('/background.png');">
         <div class="hero-content">
             <h1>RANCOL.DEV</h1>
-            <p>Roadmap мододела rancol'а // Конверты авто для NFS MW 2012</p>
+            <p>Roadmap мододела rancol'а</p>
         </div>
     </div>
 
@@ -331,21 +331,19 @@
             </div>
         </div>
     </div>
-            <script>
-    document.getElementById('carSearch').addEventListener('input', function() {
-        let filter = this.value.toLowerCase();
-        // Теперь ищем сами ссылки, внутри которых лежат карточки
-        let carLinks = document.querySelectorAll('.garage-grid > a');
+    <script>
+        document.getElementById('carSearch').addEventListener('input', function() {
+            let filter = this.value.toLowerCase().trim();
+            let cards = document.querySelectorAll('.searchable-card');
 
-        carLinks.forEach(function(link) {
-            let carName = link.querySelector('.car-name span').textContent.toLowerCase();
-            
-            // Если имя совпадает — показываем всю ссылку с карточкой, если нет — скрываем
-            if (carName.includes(filter)) {
-                link.style.display = "";
-            } else {
-                link.style.display = "none";
-            }
+            cards.forEach(function(card) {
+                let carDataName = card.getAttribute('data-name').toLowerCase();
+                
+                if (carDataName.includes(filter)) {
+                    card.style.display = "block"; // Показываем карточку
+                } else {
+                    card.style.display = "none";  // Скрываем карточку
+                }
+            });
         });
-    });
-</script>
+    </script>
