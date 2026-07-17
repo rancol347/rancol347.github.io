@@ -5,137 +5,313 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>rancol.dev | NFS MW 2012 Car Mods</title>
     <style>
-        /* Подключаем шрифт Bender */
+        /* Подключаем Bender */
         @font-face {
             font-family: 'Bender';
-            src: url('https://cdnfonts.com') format('woff');
+            src: url('https://onlinewebfonts.com') format('woff2');
             font-weight: normal;
             font-style: normal;
         }
 
         body { 
-            font-family: 'Bender', 'Segoe UI', sans-serif; 
-            background: #0b0c10; 
-            color: #c5c6c7; 
+            font-family: 'Bender', 'Arial Black', sans-serif; 
+            background-color: #0b0c0e;
+            color: #e3e4e6; 
             margin: 0; 
-            padding: 40px 20px; 
-            text-align: center; 
+            padding: 0;
             letter-spacing: 0.5px;
         }
-        .container { 
-            max-width: 750px; 
-            margin: 0 auto; 
-            background: #1f2833; 
-            padding: 30px; 
-            border-radius: 6px; 
-            border-top: 5px solid #ff3333; 
-            box-shadow: 0 10px 35px rgba(0,0,0,0.6); 
+
+        /* Навигационная панель сверху */
+        .navbar {
+            background: rgba(15, 17, 20, 0.95);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
         }
-        h1 { 
-            color: #fff; 
-            margin-bottom: 5px; 
-            font-size: 3em;
-            letter-spacing: 3px; 
-        }
-        .subtitle { 
-            color: #ff3333; 
-            font-weight: bold; 
-            font-size: 1.1em; 
-            text-transform: uppercase; 
-            margin-bottom: 35px; 
+
+        .logo {
+            font-size: 1.4em;
+            font-weight: 900;
+            color: #fff;
             letter-spacing: 2px;
         }
-        .garage-title {
-            text-align: left;
-            font-size: 1.3em;
+        
+        .logo span { color: #ff3333; }
+
+        .nav-links a {
+            color: #8aa0a8;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            margin-left: 20px;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover { color: #fff; }
+
+        /* ОГРОМНЫЙ БАННЕР С ТАЧКОЙ (как на nfsmods) */
+        .hero-banner {
+            position: relative;
+            height: 480px;
+            /* В будущем вставь сюда прямую ссылку на свой скриншот Супры */
+            background-image: linear-gradient(to bottom, rgba(11, 12, 14, 0.3) 0%, rgba(11, 12, 14, 1) 100%), 
+                              url('https://unsplash.com'); 
+            background-size: cover;
+            background-position: center 35%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(1px);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-size: 4em;
+            margin: 0 0 10px 0;
             color: #fff;
-            border-bottom: 2px solid #333;
-            padding-bottom: 8px;
-            margin-bottom: 20px;
             text-transform: uppercase;
+            letter-spacing: 5px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.8);
         }
-        .progress-box { 
-            background: #151a21; 
-            padding: 25px; 
-            border-radius: 4px; 
-            text-align: left; 
-            margin-bottom: 30px; 
+
+        .hero-content p {
+            font-size: 1.2em;
+            color: #ddd;
+            margin: 0 0 30px 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
         }
-        .car-item { 
-            margin-bottom: 25px; 
-        }
-        .car-item:last-child {
-            margin-bottom: 0;
-        }
-        .progress-title { 
-            display: flex; 
-            justify-content: space-between; 
-            font-weight: bold; 
-            margin-bottom: 8px; 
-            font-size: 1.1em;
-        }
-        .car-details {
-            font-size: 0.85em;
-            color: #86c232; /* Зеленый цвет для выполненных подпунктов */
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-        .bar-bg { 
-            background: #2a2a2a; 
-            height: 16px; 
-            border-radius: 0px; /* Квадратные брутальные линии */
-            overflow: hidden; 
-            border: 1px solid #444;
-        }
-        .bar-fill { 
-            background: linear-gradient(90deg, #cc0000, #ff3333); 
-            height: 100%; 
-        }
-        .btn-tg { 
-            display: inline-block; 
-            background: #0088cc; 
-            color: #fff; 
-            padding: 15px 35px; 
-            text-decoration: none; 
-            font-weight: bold; 
+
+        /* Кнопка ТГ на баннере */
+        .btn-main {
+            display: inline-block;
+            background: #ff3333;
+            color: #fff;
+            padding: 15px 35px;
+            text-decoration: none;
+            font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            transition: 0.2s; 
-            margin-top: 10px; 
-            border-radius: 2px;
+            border-radius: 3px;
+            box-shadow: 0 4px 15px rgba(255, 51, 51, 0.4);
+            transition: 0.2s;
         }
-        .btn-tg:hover { 
-            background: #0077b3; 
-            transform: scale(1.02); 
+
+        .btn-main:hover {
+            background: #cc0000;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 51, 51, 0.6);
+        }
+
+        /* НИЖНЯЯ ЗОНА КОНТЕНТА */
+        .main-content {
+            max-width: 1100px;
+            margin: -40px auto 60px auto;
+            position: relative;
+            z-index: 3;
+            padding: 0 20px;
+        }
+
+        /* Фейковая панель фильтров/поиска под NFSMods */
+        .filter-bar {
+            background: #141619;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 40px;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .search-mock {
+            flex: 1;
+            background: #0b0c0e;
+            border: 1px solid #2d3139;
+            padding: 12px 15px;
+            color: #646973;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            text-align: left;
+        }
+
+        .badge-mock {
+            background: #2d3139;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 0.85em;
+            text-transform: uppercase;
+        }
+
+        /* СЕТКА С КАРТОЧКАМИ ПРОЕКТОВ (GRID) */
+        .garage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .car-card {
+            background: #141619;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .car-card:hover {
+            border-color: rgba(255, 51, 51, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+        }
+
+        /* Верх карточки (заглушка под фото машины) */
+        .car-img-placeholder {
+            height: 160px;
+            background: #1f2326;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #444;
+            font-size: 2em;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .supra-bg {
+            /* Когда зальешь скриншот подкапотки, поменяешь ссылку ниже */
+            background-image: linear-gradient(to top, #141619 0%, transparent 100%), url('https://unsplash.com');
+        }
+
+        .car-info {
+            padding: 25px;
+            text-align: left;
+        }
+
+        .car-name {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #fff;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .car-name span:last-child { color: #ff3333; }
+
+        .car-meta {
+            font-size: 0.8em;
+            color: #646973;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .status-row {
+            font-size: 0.85em;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .status-row span:last-child { font-weight: bold; }
+        .text-done { color: #52ff7a; }
+        .text-process { color: #ffcc00; }
+        .text-queue { color: #646973; }
+
+        /* Полоса прогресса */
+        .bar-bg {
+            background: #22252a;
+            height: 4px;
+            margin-top: 15px;
+        }
+        .bar-fill {
+            background: #ff3333;
+            height: 100%;
+            box-shadow: 0 0 8px #ff3333;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>rancol.dev</h1>
-        <div class="subtitle">NFS Most Wanted 2012 // Car Customization & Ports</div>
-        <p>Добро пожаловать в мастерскую! Здесь публикуется актуальный статус разработки и конверта автомобилей для MW2012.</p>
-        
-        <div class="progress-box">
-            <div class="garage-title">🛠 В разработке (Текущие проекты)</div>
-                
-            <!-- Supra -->
-            <div class="car-item">
-                <div class="progress-title"><span>Toyota Supra (A80)</span> <span>65%</span></div>
-                <div class="car-details">✓ Кузов полностью готов • 🛠 Работа над оптикой • ⏳ Детализация подкапотного пространства</div>
-                <div class="bar-bg"><div class="bar-fill" style="width: 65%;"></div></div>
-            </div>
-            
-            <!-- Будущий проект -->
-            <div class="car-item">
-                <div class="progress-title"><span>BMW M8 Coupe (F92)</span> <span>0%</span></div>
-                <div class="car-details">⏳ В очереди на конверт</div>
-                <div class="bar-bg"><div class="bar-fill" style="width: 0%;"></div></div>
-            </div>
+
+    <!-- Шапка сайта -->
+    <div class="navbar">
+        <div class="logo">rancol<span>.dev</span></div>
+        <div class="nav-links">
+            <a href="#">Главная</a>
+            <a href="https://t.me" target="_blank">Telegram</a>
         </div>
-        <p>Все скриншоты тестов, видео с прожаркой физики и релизы модов выходят в моем канале:</p>
-        <!-- Не забудьте вставить ссылку на ваш канал вместо "ваш_канал" -->
-        <a href="https://t.me/rancoloff" target="_blank" class="btn-tg">✈️ Телеграм-канал</a>
     </div>
-</body>
-</html>
+
+    <!-- Главный баннер с тачкой -->
+    <div class="hero-banner">
+        <div class="hero-content">
+            <h1>rancol.dev</h1>
+            <p>Roadmap мододела rancol'a</p>
+            <a href="https://t.me/rancol347" target="_blank" class="btn-main">Вступить в Telegram-канал</a>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div class="main-content">
+        
+        <!-- Имитация панели управления из NFSMods -->
+        <div class="filter-bar">
+            <div class="search-mock">Поиск модов...</div>
+            <div class="badge-mock">Игра: NFS MW 2012</div>
+            <div class="badge-mock">Сортировка: По готовности</div>
+        </div>
+
+        <!-- Сетка с карточками машин -->
+        <div class="garage-grid">
+            
+            <!-- Карточка 1: Супра -->
+            <div class="car-card">
+                <div class="car-img-placeholder supra-bg"></div>
+                <div class="car-info">
+                    <div class="car-name">
+                        <span>Toyota Supra (A80)</span>
+                        <span>65%</span>
+                    </div>
+                    <div class="car-meta">Stock Edition</div>
+                    
+                    <div class="status-row"><span>Кузовная сборка:</span> <span class="text-done">Готово</span></div>
+                    <div class="status-row"><span>Оптика & Фары:</span> <span class="text-process">В процессе</span></div>
+                    <div class="status-row"><span>Подкапотка (2JZ):</span> <span class="text-process">В процессе</span></div>
+                    
+                    <div class="bar-bg"><div class="bar-fill" style="width: 65%;"></div></div>
+                </div>
+            </div>
+
+            <!-- Карточка 2: М8 -->
+            <div class="car-card">
+                <div class="car-img-placeholder" style="background-color: #1a1c1f; font-size: 1.1em; color: #3d434d;">ФОТО В ОЧЕРЕДИ</div>
+                <div class="car-info">
+                    <div class="car-name">
+                        <span>BMW M8 Coupe (F92)</span>
+                        <span>0%</span>
+                    </div>
+                    <div class="car-meta">В планах</div>
+                    
