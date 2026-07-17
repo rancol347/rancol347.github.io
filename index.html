@@ -177,9 +177,18 @@
             background-color: #1f2326;
         }
         
-        /* ЕСЛИ КАРТИНКА КАРТОЧКИ — ЭТО НАША ЗАГЛУШКА, НАСИЛЬНО РАС ТЯ ГИ ВА ЕМ ЕЁ */
-        .car-img-placeholder[style*="stub.png"] {
-            background-size: 100% 100% !important;
+        /* Переключаем стиль деформации на твой новый файл */
+        .car-img-placeholder.stretched-stub {
+            background-image: none !important; 
+            overflow: hidden;
+            display: flex;
+        }
+        
+        .car-img-placeholder.stretched-stub img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: fill !important; /* Насильно плющит и тянет по вертикали/горизонтали */
+            display: block;
         }
 
         .car-info { padding: 25px; text-align: left; }
@@ -279,9 +288,9 @@
 
                 <!-- БМВ М8 (Прогресс менять ТОЛЬКО в data-progress) -->
                 <div class="car-card searchable-card" data-name="bmw m8 coupe f92" data-progress="0">
-                        <div class="car-img-placeholder" style="background-image: url('/criterion.png');"></div>
-                    <div class="car-info">
-                        <div class="car-name">
+                    <div class="car-img-placeholder stretched-stub">
+                        <img src="/criterion.png" alt="Criterion">
+                    </div>
                             <span>BMW M8 Coupe (F92)</span> 
                             <span class="percent-text"><!-- Сюда процент подставится сам --></span>
                         </div>
