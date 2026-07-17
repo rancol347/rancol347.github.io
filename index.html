@@ -301,23 +301,21 @@
 
         <!-- Сетка с карточками машин -->
         <div class="garage-grid">
-            
-            <!-- Карточка 1: Супра -->
-            <div class="car-card">
-                <div class="car-img-placeholder supra-bg"></div>
-                <div class="car-info">
-                    <div class="car-name">
-                        <span>Toyota Supra (A80)</span>
-                        <span>65%</span>
+                                <!-- Карточка Супры теперь ведет на отдельную страницу -->
+                <a href="/supraa80/" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="car-card">
+                        <!-- Тут оставляешь всё как было: placeholder, car-info, полосу прогресса... -->
+                        <div class="car-img-placeholder" style="background-image: url('/supra_1.png');"></div>
+                        <div class="car-info">
+                            <div class="car-name"><span>Toyota Supra (A80)</span> <span>65%</span></div>
+                            <div class="car-meta">Stock Edition</div>
+                            <div class="status-row"><span>Кузов:</span> <span class="text-done">Готово</span></div>
+                            <div class="status-row"><span>Оптика & Фары:</span> <span class="text-process">В процессе</span></div>
+                            <div class="status-row"><span>Подкапотка (2JZ):</span> <span class="text-process">В процессе</span></div>
+                            <div class="bar-bg"><div class="bar-fill" style="width: 65%;"></div></div>
+                        </div>
                     </div>
-                    <div class="car-meta">Stock Edition</div>
-                    
-                    <div class="status-row"><span>Кузовная сборка:</span> <span class="text-done">Готово</span></div>
-                    <div class="status-row"><span>Оптика & Фары:</span> <span class="text-process">В процессе</span></div>
-                    <div class="status-row"><span>Подкапотка (2JZ):</span> <span class="text-process">В процессе</span></div>
-                    
-                    <div class="bar-bg"><div class="bar-fill" style="width: 65%;"></div></div>
-                </div>
+                </a>
             </div>
 
             <!-- Карточка 2: М8 -->
