@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
         <div class="logo" style="cursor: pointer;" onclick="window.location.href='/'">RANCOL<span>.DEV</span></div>
         <div class="nav-links">
             <a href="/">ГЛАВНАЯ</a>
-            <a href="https://t.me" target="_blank">TELEGRAM</a>
+            <a href="https://t.me/rancol347" target="_blank">TELEGRAM</a>
         </div>
     `;
     
