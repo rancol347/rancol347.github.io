@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rancol.dev | NFS MW 2012 Car Mods</title>
+    <style>
+        /* Подключаем шрифт Bender */
+        @font-face {
+            font-family: 'Bender';
+            src: url('https://cdnfonts.com') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body { 
+            font-family: 'Bender', 'Segoe UI', sans-serif; 
+            background: #0b0c10; 
+            color: #c5c6c7; 
+            margin: 0; 
+            padding: 40px 20px; 
+            text-align: center; 
+            letter-spacing: 0.5px;
+        }
+        .container { 
+            max-width: 750px; 
+            margin: 0 auto; 
+            background: #1f2833; 
+            padding: 30px; 
+            border-radius: 6px; 
+            border-top: 5px solid #ff3333; 
+            box-shadow: 0 10px 35px rgba(0,0,0,0.6); 
+        }
+        h1 { 
+            color: #fff; 
+            margin-bottom: 5px; 
+            font-size: 3em;
+            letter-spacing: 3px; 
+        }
+        .subtitle { 
+            color: #ff3333; 
+            font-weight: bold; 
+            font-size: 1.1em; 
+            text-transform: uppercase; 
+            margin-bottom: 35px; 
+            letter-spacing: 2px;
+        }
+        .garage-title {
+            text-align: left;
+            font-size: 1.3em;
+            color: #fff;
+            border-bottom: 2px solid #333;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .progress-box { 
+            background: #151a21; 
+            padding: 25px; 
+            border-radius: 4px; 
+            text-align: left; 
+            margin-bottom: 30px; 
+        }
+        .car-item { 
+            margin-bottom: 25px; 
+        }
+        .car-item:last-child {
+            margin-bottom: 0;
+        }
+        .progress-title { 
+            display: flex; 
+            justify-content: space-between; 
+            font-weight: bold; 
+            margin-bottom: 8px; 
+            font-size: 1.1em;
+        }
+        .car-details {
+            font-size: 0.85em;
+            color: #86c232; /* Зеленый цвет для выполненных подпунктов */
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        .bar-bg { 
+            background: #2a2a2a; 
+            height: 16px; 
+            border-radius: 0px; /* Квадратные брутальные линии */
+            overflow: hidden; 
+            border: 1px solid #444;
+        }
+        .bar-fill { 
+            background: linear-gradient(90deg, #cc0000, #ff3333); 
+            height: 100%; 
+        }
+        .btn-tg { 
+            display: inline-block; 
+            background: #0088cc; 
+            color: #fff; 
+            padding: 15px 35px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: 0.2s; 
+            margin-top: 10px; 
+            border-radius: 2px;
+        }
+        .btn-tg:hover { 
+            background: #0077b3; 
+            transform: scale(1.02); 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>rancol.dev</h1>
+        <div class="subtitle">NFS Most Wanted 2012 // Car Customization & Ports</div>
+        <p>Добро пожаловать в мастерскую! Здесь публикуется актуальный статус разработки и конверта автомобилей для MW2012.</p>
+        
+        <div class="progress-box">
+            <div class="garage-title">🛠 В разработке (Текущие проекты)</div>
+                
+            <!-- Supra -->
+            <div class="car-item">
+                <div class="progress-title"><span>Toyota Supra (A80)</span> <span>65%</span></div>
+                <div class="car-details">✓ Кузов полностью готов • 🛠 Работа над оптикой • ⏳ Детализация подкапотного пространства</div>
+                <div class="bar-bg"><div class="bar-fill" style="width: 65%;"></div></div>
+            </div>
+            
+            <!-- Будущий проект -->
+            <div class="car-item">
+                <div class="progress-title"><span>BMW M8 Coupe (F92)</span> <span>0%</span></div>
+                <div class="car-details">⏳ В очереди на конверт</div>
+                <div class="bar-bg"><div class="bar-fill" style="width: 0%;"></div></div>
+            </div>
+        </div>
+        <p>Все скриншоты тестов, видео с прожаркой физики и релизы модов выходят в моем канале:</p>
+        <!-- Не забудьте вставить ссылку на ваш канал вместо "ваш_канал" -->
+        <a href="https://t.me/rancoloff" target="_blank" class="btn-tg">✈️ Телеграм-канал</a>
+    </div>
+</body>
+</html>
