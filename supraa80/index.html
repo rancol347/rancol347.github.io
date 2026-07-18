@@ -101,50 +101,115 @@
             border: 1px solid rgba(255,255,255,0.1);
             box-shadow: 0 0 30px rgba(0,0,0,0.8);
         }
+        /* Стили для шахматного роадмапа машины */
+        .car-presentation {
+            max-width: 1100px;
+            margin: 60px auto;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 80px; /* Расстояние между блоками */
+        }
+        
+        .showcase-row {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        /* Каждый второй блок разворачиваем зеркально */
+        .showcase-row:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .showcase-media {
+            flex: 1;
+            aspect-ratio: 16 / 9;
+            background: #141619;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .showcase-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .showcase-text {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .showcase-text h2 {
+            font-size: 1.8em;
+            color: #fff;
+            text-transform: uppercase;
+            margin: 0 0 15px 0;
+            letter-spacing: 2px;
+            border-left: 3px solid #ff3333;
+            padding-left: 15px;
+        }
+        
+        .showcase-text p {
+            color: #8aa0a8;
+            line-height: 1.6;
+            font-size: 1em;
+            text-transform: uppercase;
+            margin: 0;
+        }
+        
+        /* Адаптив под мобилки */
+        @media (max-width: 768px) {
+            .showcase-row, .showcase-row:nth-child(even) {
+                flex-direction: column !important;
+                gap: 20px;
+            }
+            .car-presentation {
+                gap: 50px;
+            }
+        }
     </style>
 </head>
-<body>
+<div class="car-presentation">
 
-    <!-- Шапка вставится сама скриптом navbar.js перед контейнером -->
-
-    <div class="container">
-        <a href="/" class="back-link">← Вернуться в гараж</a>
-        <h1>Toyota Supra (A80)</h1>
-        <div class="meta">Текущий статус: 65% // Скриншоты разработки</div>
-
-        <p style="color: #8a8d93; line-height: 1.6; font-size: 1.05em;">
-            Работа кипит. Полностью завершил кузовные работы, сейчас ковыряю оптику и детализирую подкапотку под 2JZ-GTE.
-        </p>
-
-        <div class="screenshot-grid">
-            <!-- Исправленные пути к картинкам внутри папки supraa80 -->
-            <img src="1262560_20260716145534_1.png" alt="Supra Look">
-            <!-- Убедись, что файл подкапотки лежит в этой же папке под именем supra_engine.png -->
-            <img src="supra_engine.png" alt="Supra Engine">
+    <!-- БЛОК 1: КУЗОВ -->
+    <div class="showcase-row">
+        <div class="showcase-media">
+            <!-- Сюда вставишь путь к фотке кузова -->
+            <img src="supra_body.png" alt="Кузов">
+        </div>
+        <div class="showcase-text">
+            <h2>Кузов и колеса</h2>
+            <p>Идеальный стоковый силуэт культовой A80. Аккуратная модель как кузовных элементов, так и 16-ти дюймовых колесных дисков.</p>
         </div>
     </div>
 
-    <!-- Лайтбокс -->
-    <div id="lightbox" class="lightbox">
-        <img id="lightbox-img" src="" alt="Большой просмотр">
+    <!-- БЛОК 2: ПОДКАПОТКА (Картинка будет справа!) -->
+    <div class="showcase-row">
+        <div class="showcase-media">
+            <!-- Сюда вставишь путь к фотке движка, когда доделаешь -->
+            <img src="supra_engine.png" alt="Движок 2JZ">
+        </div>
+        <div class="showcase-text">
+            <h2>Моторный отсек [2JZ-GTE]</h2>
+            <p>Качественная проработка моторного отсека. Правильный подбор материалов и настройка текстур.</p>
+        </div>
     </div>
 
-    <script>
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        const images = document.querySelectorAll('.screenshot-grid img');
+    <!-- БЛОК 3: ОПТИКА -->
+    <div class="showcase-row">
+        <div class="showcase-media">
+            <img src="supra_lights.png" alt="Оптика">
+        </div>
+        <div class="showcase-text">
+            <h2>Фары</h2>
+            <p>Детализация внутренней структуры фар, линз и отражателей. Аккуратная настройка материалов стёкол, фар, и корректные текстуры, чтобы максимально соответствии с оригиналом A80.</p>
+        </div>
+    </div>
 
-        images.forEach(img => {
-            img.addEventListener('click', () => {
-                lightboxImg.src = img.src;
-                lightbox.style.display = 'flex';
-            });
-        });
+</div>
 
-        lightbox.addEventListener('click', () => {
-            lightbox.style.display = 'none';
-        });
-    </script>
-
-</body>
 </html>
