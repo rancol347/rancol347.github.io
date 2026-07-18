@@ -368,42 +368,33 @@
 <div class="footer-quote" id="rancolQuote" style="text-align: center; text-transform: uppercase; color: #646973; font-size: 0.9em; letter-spacing: 1px; padding: 20px 0;">
     <!-- Сюда JS сам подставит цитату -->
 </div>
-    <!-- HTML-структура для пасхалки (по умолчанию скрыта) -->
+<!-- HTML-структура для пасхалки (по умолчанию скрыта) -->
 <div id="nikolayEasterEgg" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(11, 12, 14, 0.95); z-index: 99999; justify-content: center; align-items: center; flex-direction: column; cursor: pointer;" onclick="closeNikolay()">
     <img src="nikolay.png" alt="Николай" style="max-width: 90%; max-height: 80vh; border: 4px solid #ff3333; box-shadow: 0 0 50px rgba(255, 51, 51, 0.5); border-radius: 8px;">
-    <p style="color: #fff; margin-top: 20px; font-size: 1.5em; text-transform: uppercase; letter-spacing: 2px; font-weight: bold; text-shadow: 0 0 10px #ff3333;">ЧИТ-КОД АКТИВИРОВАН: НИКОЛАЙ В СЕТИ 💀</p>
+    <p style="color: #fff; margin-top: 20px; font-size: 1.5em; text-transform: uppercase; letter-spacing: 2px; font-weight: bold; text-shadow: 0 0 10px #ff3333;">НИКОЛАЙ</p>
     <p style="color: #646973; margin-top: 5px; font-size: 0.9em; text-transform: uppercase;">[ Кликни в любое место, чтобы закрыть ]</p>
 </div>
 
-<!-- Логика чит-кода -->
+
+<!-- Отдельный скрипт для пасхалки с Николаем -->
 <script>
-    let keyBuffer = '';
-    const secretCode = 'nikolay';
-
-    window.addEventListener('keydown', (e) => {
-        // Добавляем нажатую букву в буфер (переводим в нижний регистр на всякий случай)
-        keyBuffer += e.key.toLowerCase();
-        
-        // Ограничиваем длину буфера, чтобы он не разрастался бесконечно
-        if (keyBuffer.length > secretCode.length) {
-            keyBuffer = keyBuffer.substring(keyBuffer.length - secretCode.length);
-        }
-
-        // Проверяем, совпал ли буфер с секретным кодом
-        if (keyBuffer === secretCode) {
-            const eggElement = document.getElementById('nikolayEasterEgg');
+    // Слушаем двойной клик по всей странице
+    window.addEventListener('dblclick', () => {
+        const eggElement = document.getElementById('nikolayEasterEgg');
+        if (eggElement) {
             eggElement.style.display = 'flex';
-            
-            // Если у тебя играет музыка на сайте или хочешь добавить звук, можно встроить сюда
-            keyBuffer = ''; // Очищаем буфер после активации
         }
     });
 
-    // Функция закрытия окна при клике
+    // Функция закрытия окна при клике на картинку или фон пасхалки
     function closeNikolay() {
-        document.getElementById('nikolayEasterEgg').style.display = 'none';
+        const eggElement = document.getElementById('nikolayEasterEgg');
+        if (eggElement) {
+            eggElement.style.display = 'none';
+        }
     }
 </script>
+
 <script>
     const quotes = [
         "ВСЕМ ПРИВЕТ ЧУВАКИ. КОРОЧЕ ЧЕ ХОТЕЛ СКАЗАТЬ ТО ХМММ... ЛАН КОРОЧЕ ВСЕМ ПРИВЕТ // RANCOL.DEV // 2026",
