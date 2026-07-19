@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     header.innerHTML = `
         <div class="logo" style="cursor: pointer;" onclick="window.location.href='/'">RANCOL<span>.DEV</span></div>
         <div class="nav-links">
+            <a href="https://www.donationalerts.com/r/rancol" target="_blank">DONATE</a>
             <a href="https://nfsmods.xyz/user/9422" target="_blank">NFSMODS</a>
             <a href="https://t.me/rancol347" target="_blank">TELEGRAM</a>
         </div>
