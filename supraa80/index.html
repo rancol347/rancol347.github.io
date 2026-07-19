@@ -130,7 +130,9 @@
             border-radius: 4px;
             overflow: hidden;
         }
-        
+        .showcase-media a {
+            cursor: zoom-in;
+        }
         .showcase-media img {
             width: 100%;
             height: 100%;
@@ -179,7 +181,9 @@
     <div class="showcase-row">
         <div class="showcase-media">
             <!-- Сюда вставишь путь к фотке кузова -->
-            <img src="supra_body.png" alt="Кузов">
+            <a href="supra_body.png" data-fancybox="gallery" data-caption="Кузов и колеса">
+              <img src="supra_body.png" alt="Кузов">
+            </a>
         </div>
         <div class="showcase-text">
             <h2>Кузов и колеса</h2>
@@ -191,7 +195,9 @@
     <div class="showcase-row">
         <div class="showcase-media">
             <!-- Сюда вставишь путь к фотке движка, когда доделаешь -->
-            <img src="supra_engine.png" alt="Движок 2JZ">
+            <a href="supra_engine.png" data-fancybox="gallery" data-caption="Моторный отсек [2JZ-GTE]">
+              <img src="supra_engine.png" alt="Движок 2JZ">
+            </a>
         </div>
         <div class="showcase-text">
             <h2>Моторный отсек [2JZ-GTE]</h2>
@@ -202,7 +208,9 @@
     <!-- БЛОК 3: ОПТИКА -->
     <div class="showcase-row">
         <div class="showcase-media">
-            <img src="supra_lights.png" alt="Оптика">
+            <a href="supra_lights.png" data-fancybox="gallery" data-caption="Фары">
+              <img src="supra_lights.png" alt="Оптика">
+            </a>
         </div>
         <div class="showcase-text">
             <h2>Фары</h2>
@@ -211,5 +219,17 @@
     </div>
 
 </div>
-
+  <!-- Подключаем скрипты Fancybox перед закрытием html -->
+  <link rel="stylesheet" href="https://jsdelivr.net" />
+  <script src="https://jsdelivr.net"></script>
+  <script>
+    Fancybox.bind("[data-fancybox]", {
+      Toolbar: {
+        display: {
+          left: ["infobar"],
+          right: ["iterateZoom", "fullscreen", "download", "close"],
+        },
+      },
+    });
+  </script>
 </html>
