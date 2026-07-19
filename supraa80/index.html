@@ -219,17 +219,16 @@
     </div>
 
 </div>
-  <!-- Подключаем скрипты Fancybox перед закрытием html -->
-  <link rel="stylesheet" href="https://jsdelivr.net" />
-  <script src="https://jsdelivr.net"></script>
-  <script>
-    Fancybox.bind("[data-fancybox]", {
-      Toolbar: {
-        display: {
-          left: ["infobar"],
-          right: ["iterateZoom", "fullscreen", "download", "close"],
-        },
+<script>
+  // Ищем все ссылки внутри главного блока презентации
+  Fancybox.bind(".car-presentation a", {
+    groupAll: true, 
+    Toolbar: {
+      display: {
+        left: ["infobar"],
+        right: ["iterateZoom", "fullscreen", "download", "close"],
       },
-    });
-  </script>
+    },
+  });
+</script>
 </html>
