@@ -38,9 +38,9 @@ document.addEventListener("DOMContentLoaded", function() {
             transform: translateX(-50%) translateY(10px);
             background-color: #161616;
             
-            /* ИЗМЕНЕННЫЕ СТРОКИ: */
-            min-width: 140px; /* Сузили базовую ширину с 200px до 140px */
-            padding: 4px 10px; /* Сделали компактные отступы сверху/снизу и по бокам */
+            /* ИЗМЕНЕНИЯ: */
+            width: max-content; /* Рамка будет сжиматься ровно по длине самого длинного слова */
+            padding: 6px 0;    /* Убираем боковые отступы у рамки, переносим их на ссылки */
             
             box-shadow: 0px 8px 16px rgba(0,0,0,0.6);
             border-radius: 6px;
@@ -50,10 +50,25 @@ document.addEventListener("DOMContentLoaded", function() {
             visibility: hidden;
             transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
         }
-
-        /* Эффект наведения на ссылку в меню */
+        
+        /* 2. Ссылки внутри выпадашки — центровка и отступы */
+        .dropdown-content a {
+            color: #b3b3b3 !important;
+            text-decoration: none !important;
+            display: block !important;
+            font-size: 13px !important;
+            font-family: sans-serif !important;
+            
+            /* ИЗМЕНЕНИЯ: */
+            text-align: center !important;  /* Жесткая центровка текста по середине */
+            padding: 12px 20px !important;  /* 12px сверху/снизу (это сделает отступ между строчками) и 20px по бокам */
+            
+            transition: background 0.2s, color 0.2s !important;
+        }
+        
+        /* Ховер с твоим новым красным цветом */
         .dropdown-content a:hover {
-            background-color: #ff3333 !important; /* Оранжевый акцент */
+            background-color: #ff3333 !important; 
             color: #fff !important;
         }
 
