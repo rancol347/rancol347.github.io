@@ -100,6 +100,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
             <a href="https://nfsmods.xyz/user/9422" target="_blank">NFSMODS</a>
             <a href="https://t.me/rancol347" target="_blank">TELEGRAM</a>
+            <a href="#" onclick="changeLanguage('ru'); return false;">RU</a>
+            <a href="#" onclick="changeLanguage('en'); return false;">EN</a>
         </div>
     `;
 
