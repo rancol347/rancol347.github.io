@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         /* Эффект наведения на ссылку в меню */
         .dropdown-content a:hover {
-            background-color: #ff7300 !important; /* Оранжевый акцент */
+            background-color: #ff3333 !important; /* Оранжевый акцент */
             color: #fff !important;
         }
 
