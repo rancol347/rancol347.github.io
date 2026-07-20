@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
         "В ПЛАНАХ": "IN PLANS",
         "ГОТОВО": "DONE",
         "В ПРОЦЕССЕ": "IN PROGRESS",
+        "Roadmap модмейкера rancol'а": "Rancol's Roadmap",
         "В ОЧЕРЕДИ": "IN QUEUE",
         "КУЗОВ": "BODY",
         "ФАРЫ": "LIGHTS",
