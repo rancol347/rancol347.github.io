@@ -30,15 +30,25 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         /* Ссылки внутри выпадашки */
-        .dropdown-content a {
-            color: #b3b3b3 !important;
-            padding: 10px 16px !important;
-            text-decoration: none !important;
-            display: block !important;
-            font-size: 13px !important;
-            font-family: sans-serif !important;
-            text-align: center !important;
-            transition: background 0.2s, color 0.2s !important;
+        .dropdown-content {
+            display: block;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background-color: #161616;
+            
+            /* ИЗМЕНЕННЫЕ СТРОКИ: */
+            min-width: 140px; /* Сузили базовую ширину с 200px до 140px */
+            padding: 4px 10px; /* Сделали компактные отступы сверху/снизу и по бокам */
+            
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.6);
+            border-radius: 6px;
+            border: 1px solid #2a2a2a;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
         }
 
         /* Эффект наведения на ссылку в меню */
